@@ -1,0 +1,12 @@
+services:
+  syncthing:
+    image: syncthing/syncthing:latest
+    container_name: syncthing
+    volumes:
+      - /opt/syncthing/config:/var/syncthing/config  # Persistent storage for Syncthing configuration
+      - /home:/home      # Persistent storage for data to be synced
+    ports:
+      - "8384:8384"  # Web GUI access
+      - "22000:22000"  # Sync protocol port
+      - "21027:21027/udp"  # Discovery protocol port
+    restart: unless-stopped

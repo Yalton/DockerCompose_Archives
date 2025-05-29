@@ -1,0 +1,18 @@
+version: '3'
+services:
+  app:
+    container_name: npmproxy
+    image: 'jc21/nginx-proxy-manager:latest'
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    environment:
+      DB_MYSQL_HOST: ${mysqlhost}
+      DB_MYSQL_PORT: 3306
+      DB_MYSQL_USER: ${mysqluser}
+      DB_MYSQL_PASSWORD: ${mysqlpass}
+      DB_MYSQL_NAME: ${mysqlname}
+    volumes:
+      - /media/NAS/DNSServer/proxy/data:/data
+      - /media/NAS/DNSServer/proxy/letsencrypt:/etc/letsencrypt

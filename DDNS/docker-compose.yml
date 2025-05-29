@@ -1,0 +1,11 @@
+version: '2'
+services:
+  cloudflare-ddns:
+    image: oznu/cloudflare-ddns:latest
+    container_name: ddns-billbert
+    restart: always
+    environment:
+      - API_KEY=${apikey}
+      - ZONE=${zone}
+#      - SUBDOMAIN=ddns
+      - PROXIED=true
